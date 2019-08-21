@@ -1,0 +1,22 @@
+{
+  "name": "garfieldbot",
+  "version": "1.0.0",
+  "description": "A garfield themed bot for Discord",
+  "main": "garfield.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nullh/garfieldbot.git"
+  },
+  "author": "Neil Holmes (@nullh)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nullh/garfieldbot/issues"
+  },
+  "homepage": "https://github.com/Nullh/garfieldbot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
