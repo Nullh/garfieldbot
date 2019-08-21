@@ -22,5 +22,5 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)/garfield.zip'
+    targetPath: '$(Pipeline.Workspace)/s/garfield.zip'
     artifact: 'garfield.zip'
