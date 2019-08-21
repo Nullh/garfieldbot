@@ -5,7 +5,7 @@
   "main": "garfield.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"Build goes here!\""
+    "build": "zip -r garfield.zip ."
   },
   "repository": {
     "type": "git",
