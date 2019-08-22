@@ -5,12 +5,17 @@ module.exports = (client, message) => {
 
     // Respond to any words in the responses.json
     if (!message.content.startsWith(client.prefix)) {
-        if(message.content.includes(client.responses[message.content])) {
+        if (message.content.includes('garf') || message.content.includes('garfield')) {
+            myEmoji = client.emojis.random();
+            message.channel.send(myEmoji)
+            return;
+        }
+        if (client.responses[message.content]) {
             //const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
             myEmoji = client.emojis.random();
             message.channel.send(client.responses[message.content] + myEmoji)
+            return;
         }
-        return;
     }
   
     const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
