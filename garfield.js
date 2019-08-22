@@ -11,7 +11,7 @@ client.on("message", (message) => {
 
   if (message.author.bot) return;
 
-  if (message.content.includes('garf') || message.content.includes('garfield')) {
+  if (message.content.includes('garf') || message.content.includes('garfield') && message.content.startsWith(prefix)) {
     message.channel.send('You called?')
     return;
   }
