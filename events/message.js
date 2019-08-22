@@ -15,7 +15,14 @@ module.exports = (client, message) => {
         var triggerWords = Object.keys(client.responses);
         for(key in triggerWords) {
             if(message.content.toLowerCase().includes(triggerWords[key])) {
-                message.channel.send(`${client.responses[triggerWords[key]]}`)
+                console.log(`Value is ${client.responses[triggerWords[key]]}`)
+                if(typeof client.responses[triggerWords[key]] == 'string'){
+                    message.channel.send(`${client.responses[triggerWords[key]]}`)
+                } else
+                if(typeof client.responses[triggerWords[key]] == 'object'){
+                    var rand = Math.floor(Math.random() * (client.responses[triggerWords[key]].length + 1))
+                    message.channel.send(`${client.responses[triggerWords[key]][rand]}`)
+                }
             }
         }
     }
