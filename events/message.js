@@ -19,16 +19,17 @@ module.exports = (client, message) => {
   
     if (command === 'garf') {
       let [subcommand] = args
-      if (subcommand == null) {
-        message.channel.send('Yes, Jon?\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis')
-      } else
-      if (subcommand === 'listemojis') {
-        console.log(`Listing emojis`)
-        const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
-        message.channel.send(emojiList);
-      } else
-      if (subcommand === 'comic'){
-        message.channel.send('https://garfield.com/comic/random')
+      switch (subcommand){
+        case comic:
+            message.channel.send('https://garfield.com/comic/random')
+        case listemojis:
+            const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
+            message.channel.send(emojiList);
+        case help:
+            const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
+            message.channel.send(`--==|| Garfieldbot help ${gainsfield} ||==--\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis`)
+        default:
+            message.channel.send(`try '!garf help' for valid commands!`)
       }
     } 
   
