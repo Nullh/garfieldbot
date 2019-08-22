@@ -10,12 +10,11 @@ module.exports = (client, message) => {
             message.channel.send(`${myEmoji} `)
             return;
         }
-        if (client.responses[message.content]) {
-            //const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
-            console.log(`test val is ${typeof client.responses}`)
-            myEmoji = client.emojis.random();
-            message.channel.send(client.responses[message.content] + myEmoji)
-            return;
+        var keys = Object.keys(client.responses);
+        for(key in keys) {
+            if(message.content.toLowerCase().includes(keys[key])) {
+                message.channel.send(`${client.responses[keys[key]]}`)
+            }
         }
     }
   
