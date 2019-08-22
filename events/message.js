@@ -11,7 +11,7 @@ module.exports = (client, message) => {
         return;
     }
   
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
   
     console.log(`Commands are ${command} args are ${args}`)
