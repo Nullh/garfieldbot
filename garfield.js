@@ -9,18 +9,29 @@ client.on("ready", () => {
  
 client.on("message", (message) => {
 
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (message.author.bot) return;
 
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-
-  if (command === 'comic') {
-    message.channel.send('https://garfield.com/comic/random')
-  } else
-  if (message.content.startsWith("!garf")) {
-    message.channel.send("Yes, Jon?\nAsk me for a comic by typing !garf comic");
+  if (message.content.includes('garf') || message.content.includes('garfield')) {
+    message.channel.send('You called?')
   }
 
+  //Start of prefix only commands
+  if (!message.content.startsWith(prefix)) return;
+
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+
+  console.log(`Commands are ${command}`)
+
+  if (command === 'garf') {
+    let [subcommand] = args
+    if (subcommand == null) {
+      message.channel.send('Yes, Jon?\nAsk me for a comic by typing !garf comic')
+    } else
+    if (subcommand === 'comic'){
+      message.channel.send('https://garfield.com/comic/random')
+    }
+  } 
 
 });
  
