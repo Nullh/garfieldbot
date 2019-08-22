@@ -28,7 +28,7 @@ module.exports = (client, message) => {
             message.channel.send(emojiList);
             break;
         case 'mock':
-            let person = args[2]
+            let person = args
             message.channel.send(`Hey ${person}, what are you looking at, squid face?`);
             break;
         case 'help':
