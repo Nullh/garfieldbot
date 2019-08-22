@@ -6,8 +6,9 @@ module.exports = (client, message) => {
     // Respond to any words in the responses.json
     if (!message.content.startsWith(client.prefix)) {
         if(client.responses[message.content]) {
-            const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
-            message.channel.send(client.responses[message.content] + gainsfield)
+            //const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
+            myEmoji = client.emojis.random();
+            message.channel.send(client.responses[message.content] + myEmoji)
         }
         return;
     }
