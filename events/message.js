@@ -3,22 +3,10 @@ module.exports = (client, message) => {
 
     if (message.author.bot) return;
 
-    var responsefile = fs.readFileSync("response.json")
-    var response = JSON.parse(responsefile)
-  
-    /*
-    if (!message.content.startsWith(prefix) && (message.content.includes('garf') || message.content.includes('garfield'))) {
-      const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
-      //message.reply(`You called ${gainsfield}`)
-      message.channel.send(`You called? ${gainsfield}`)
-    }
-    */
-
-  
-    //Start of prefix only commands
-    if (!message.content.startsWith(prefix)) {
-        if(response[message.content]) {
-            message.channel.send(response[message.content])
+    // Respond to any words in the responses.json
+    if (!message.content.startsWith(client.prefix)) {
+        if(client.responses[message.content]) {
+            message.channel.send(client.responses[message.content])
         }
         return;
     }
