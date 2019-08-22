@@ -27,7 +27,7 @@ module.exports = (client, message) => {
             message.channel.send(emojiList);
         case 'help':
             const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
-            message.channel.send(`--==|| Garfieldbot help ${gainsfield} ||==--\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis`)
+            message.channel.send(`--== Garfieldbot help ${gainsfield} ==--\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis`)
         default:
             message.channel.send(`try '!garf help' for valid commands!`)
       }
