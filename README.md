@@ -6,6 +6,9 @@ I'm a discord bot for REAL, HARDCORE fans of Garfield (read: people on my GC).
 
 I'm still in development and don't do much right now :)
 
+[![Build Status](https://dev.azure.com/WithRecovery/Garfieldbot/_apis/build/status/Nullh.garfieldbot?branchName=master)](https://dev.azure.com/WithRecovery/Garfieldbot/_build/latest?definitionId=1&branchName=master)
+
+
 ## Productionisation
 
 On your server install pm2 with:
