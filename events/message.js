@@ -3,17 +3,19 @@ module.exports = (client, message) => {
 
     if (message.author.bot) return;
 
-    // Respond to any words in the responses.json
+    
     if (!message.content.startsWith(client.prefix)) {
+        // Respond to garf or garfield
         if (message.content.toLowerCase().includes('garf') || message.content.toLowerCase().includes('garfield')) {
             myEmoji = client.emojis.random();
             message.channel.send(`${myEmoji} `)
             return;
         }
-        var keys = Object.keys(client.responses);
-        for(key in keys) {
-            if(message.content.toLowerCase().includes(keys[key])) {
-                message.channel.send(`${client.responses[keys[key]]}`)
+        // Respond to any words in the responses.json
+        var triggerWords = Object.keys(client.responses);
+        for(key in triggerWords) {
+            if(message.content.toLowerCase().includes(triggerWords[key])) {
+                message.channel.send(`${client.responses[triggerWords[key]]}`)
             }
         }
     }
