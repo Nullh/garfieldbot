@@ -22,12 +22,19 @@ module.exports = (client, message) => {
       switch (subcommand){
         case 'comic':
             message.channel.send('https://garfield.com/comic/random')
+            break;
         case 'listemojis':
             const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
             message.channel.send(emojiList);
+            break;
+        case 'mock':
+            let person = args[2]
+            message.channel.send(`Hey ${person}, what are you looking at, squid face?`);
+            break;
         case 'help':
             const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
             message.channel.send(`--== Garfieldbot help ${gainsfield} ==--\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis`)
+            break;
         default:
             message.channel.send(`try '!garf help' for valid commands!`)
       }
