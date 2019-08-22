@@ -30,7 +30,7 @@ client.on("message", (message) => {
       message.channel.send('Yes, Jon?\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with listemojis')
     } else
     if (subcommand === ' listemojis') {
-      const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
+      const emojiList = message.guild.emojis.map((e, x) => (x + ' = ' + e) + ' | ' +e.name).join('\n');
       message.channel.send(emojiList);
     } else
     if (subcommand === 'comic'){
