@@ -5,9 +5,12 @@ module.exports = (client, message) => {
 
     
     if (!message.content.startsWith(client.prefix)) {
+
         // Respond to garf or garfield
         if (message.content.toLowerCase().includes('garf') || message.content.toLowerCase().includes('garfield')) {
-            myEmoji = client.emojis.random();
+            var rand = Math.floor(Math.random() * (client.validEmojis['emojis'].length + 1))
+            //var myEmoji = client.emojis.random();
+            var myEmoji = client.emojis.find(emoji => emoji.name === client.validEmojis['emojis'][rand]);
             message.channel.send(`${myEmoji} `)
             return;
         }
@@ -26,11 +29,11 @@ module.exports = (client, message) => {
             }
         }
     }
-  
+
+    // Handle commands to '!garf x'
+
     const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-  
-    //console.log(`Commands are ${command} args are ${args}`)
   
     if (command === 'garf') {
       let [subcommand] = args

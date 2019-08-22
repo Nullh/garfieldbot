@@ -7,9 +7,11 @@ require('dotenv').config();
 const client = new Discord.Client();
 const prefix = process.env.PREFIX;
 const responses = require('./responses');
+const validEmojis = require('./emojis.json')
 client.prefix = prefix;
 client.responses = responses;
 client.randomDate = randomDate;
+client.validEmojis = validEmojis;
 
  
 client.on("ready", () => {
