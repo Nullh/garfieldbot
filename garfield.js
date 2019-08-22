@@ -13,6 +13,7 @@ client.on("message", (message) => {
 
   if (message.content.includes('garf') || message.content.includes('garfield')) {
     message.channel.send('You called?')
+    return;
   }
 
   //Start of prefix only commands
@@ -26,7 +27,11 @@ client.on("message", (message) => {
   if (command === 'garf') {
     let [subcommand] = args
     if (subcommand == null) {
-      message.channel.send('Yes, Jon?\nAsk me for a comic by typing !garf comic')
+      message.channel.send('Yes, Jon?\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with listemojis')
+    } else
+    if (subcommand === ' listemojis') {
+      const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
+      message.channel.send(emojiList);
     } else
     if (subcommand === 'comic'){
       message.channel.send('https://garfield.com/comic/random')
