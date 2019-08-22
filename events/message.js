@@ -5,7 +5,7 @@ module.exports = (client, message) => {
 
     // Respond to any words in the responses.json
     if (!message.content.startsWith(client.prefix)) {
-        if (message.content.includes('garf') || message.content.includes('garfield')) {
+        if (message.content.toLowerCase().includes('garf') || message.content.toLowerCase().includes('garfield')) {
             myEmoji = client.emojis.random();
             message.channel.send(`${myEmoji} `)
             return;
