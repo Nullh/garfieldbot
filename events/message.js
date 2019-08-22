@@ -27,10 +27,6 @@ module.exports = (client, message) => {
             const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
             message.channel.send(emojiList);
             break;
-        case 'mock':
-            let person = args
-            message.channel.send(`Hey ${person}, what are you looking at, squid face?`);
-            break;
         case 'help':
             const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
             message.channel.send(`--== Garfieldbot help ${gainsfield} ==--\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis`)
