@@ -12,6 +12,7 @@ module.exports = (client, message) => {
         }
         if (client.responses[message.content]) {
             //const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
+            console.log(`test val is ${typeof client.responses}`)
             myEmoji = client.emojis.random();
             message.channel.send(client.responses[message.content] + myEmoji)
             return;
@@ -21,13 +22,17 @@ module.exports = (client, message) => {
     const args = message.content.slice(client.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
   
-    console.log(`Commands are ${command} args are ${args}`)
+    //console.log(`Commands are ${command} args are ${args}`)
   
     if (command === 'garf') {
       let [subcommand] = args
       switch (subcommand){
         case 'comic':
-            message.channel.send('https://garfield.com/comic/random')
+            var currentDate = new Date();
+            var firstComic = new Date(1978, 6, 19);
+            var comicDate = client.randomDate.getRandomDateInRange(firstComic, currentDate);
+            var url = `https://d1ejxu6vysztl5.cloudfront.net/comics/garfield/${comicDate.getFullYear()}/${comicDate.toISOString().substring(0, 10)}.gif`
+            message.channel.send(`${url}`)
             break;
         case 'listemojis':
             const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");

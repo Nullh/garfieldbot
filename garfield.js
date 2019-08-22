@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const randomDate = require('random-date-generator')
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 require('dotenv').config();
@@ -8,6 +9,7 @@ const prefix = process.env.PREFIX;
 const responses = require('./responses');
 client.prefix = prefix;
 client.responses = responses;
+client.randomDate = randomDate;
 
  
 client.on("ready", () => {
