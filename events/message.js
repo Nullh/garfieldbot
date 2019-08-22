@@ -4,7 +4,7 @@ module.exports = (client, message) => {
     if (message.author.bot) return;
 
     // Respond to any words in the responses.json
-    if (!message.content.startsWith(client.prefix)) {
+    if (!message.content.includes(client.prefix)) {
         if(client.responses[message.content]) {
             //const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
             myEmoji = client.emojis.random();
