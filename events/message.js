@@ -20,7 +20,7 @@ module.exports = (client, message) => {
     if (command === 'garf') {
       let [subcommand] = args
       if (subcommand == null) {
-        message.channel.send('Yes, Jon?\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with listemojis')
+        message.channel.send('Yes, Jon?\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis')
       } else
       if (subcommand === 'listemojis') {
         console.log(`Listing emojis`)
