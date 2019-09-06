@@ -37,9 +37,26 @@ module.exports = (client, message) => {
       let [subcommand] = args
       switch (subcommand){
         case 'comic':
-            var currentDate = new Date();
-            var firstComic = new Date(1978, 6, 19);
-            var comicDate = client.randomDate.getRandomDateInRange(firstComic, currentDate);
+            console.log("Starting checks");
+            if (args[1] == null && args[2] == null && args[3] == null) {
+                // Get a random comic
+                console.log("In random comic");
+                message.channel.send(`Getting a random comic`)
+                var currentDate = new Date();
+                var firstComic = new Date(1978, 6-1, 19);
+                var comicDate = client.randomDate.getRandomDateInRange(firstComic, currentDate);
+            } else {
+                console.log("In date comic");
+                console.log("Trying to make a date");
+                message.channel.send(`Getting comic for date ${args[1]}-${args[2]}-${args[3]}`)
+                var comicDate = new Date(args[1], args[2]-1, args[3])
+                if (isNaN(Date.parse(comicDate))) {
+                    console.log("Failed to make a date");
+                    message.channel.send(`Sorry, I can't find a comic for that date. Make sure you request it in the format\n!garf comic yyyy mm dd`)
+                    break;
+                }
+            }
+            console.log("Getting url");
             var url = `https://d1ejxu6vysztl5.cloudfront.net/comics/garfield/${comicDate.getFullYear()}/${comicDate.toISOString().substring(0, 10)}.gif`
             message.channel.send(`${url}`)
             break;
@@ -49,7 +66,7 @@ module.exports = (client, message) => {
             break;
         case 'help':
             const gainsfield = client.emojis.find(emoji => emoji.name === "gainsfield");
-            message.channel.send(`--== Garfieldbot help ${gainsfield} ==--\nAsk me for a comic by typing !garf comic\nGet a list of emojis I can access with !garf listemojis`)
+            message.channel.send(`--== Garfieldbot help ${gainsfield} ==--\nAsk me for a comic by typing !garf comic\nGet a comic for a certain date with !garf comic yyyy mm dd\nGet a list of emojis I can access with !garf listemojis`)
             break;
         default:
             message.channel.send(`try '!garf help' for valid commands!`)
